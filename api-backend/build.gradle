@@ -1,0 +1,20 @@
+plugins {
+    id "org.springframework.boot" version "2.0.6.RELEASE"
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'api-backend'
+    version = '1.0.0'
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-webflux'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.8.5'
+    compile 'com.sun.jersey:jersey-client:1.17.1'
+    compile 'com.google.guava:guava:14.0.1'
+}
+

@@ -1,0 +1,98 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: starter-rest-api
+spec:
+  selector:
+    app: starter-rest-api
+  ports:
+    - protocol: TCP
+      port: 8888
+      nodePort: 30001
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starter-rest-api
+spec:
+  selector:
+    matchLabels:
+      app: starter-rest-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: starter-rest-api
+    spec:
+      containers:
+        - name: starter-rest-api
+          image: martynpi/starter-rest-api:2
+          ports:
+            - containerPort: 8888
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: starter-rest-api-client
+spec:
+  selector:
+    app: starter-rest-api-client
+  ports:
+    - protocol: TCP
+      port: 8889
+      nodePort: 30002
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starter-rest-api-client
+spec:
+  selector:
+    matchLabels:
+      app: starter-rest-api-client
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: starter-rest-api-client
+    spec:
+      containers:
+        - name: starter-rest-api-client
+          image: martynpi/starter-rest-api-client:4
+          ports:
+            - containerPort: 8889
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: starter-rest-api-tests
+spec:
+  selector:
+    app: starter-rest-api-tests
+  ports:
+    - protocol: TCP
+      port: 8880
+      nodePort: 30003
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starter-rest-api-tests
+spec:
+  selector:
+    matchLabels:
+      app: starter-rest-api-tests
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: starter-rest-api-tests
+    spec:
+      containers:
+        - name: starter-rest-api-tests
+          image: martynpi/starter-rest-api-tests:4
+          ports:
+            - containerPort: 8880
