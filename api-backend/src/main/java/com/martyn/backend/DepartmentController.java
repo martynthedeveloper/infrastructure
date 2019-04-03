@@ -8,7 +8,7 @@ import java.util.Collection;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
-@RequestMapping("groups")
+@RequestMapping("departments")
 public class DepartmentController {
 
     private final DepartmentService departmentService;

@@ -1,4 +1,4 @@
-package com.martyn.servertests;
+package com.martyn.tests;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

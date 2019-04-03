@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 echo ''
-echo 'curl $(minikube service starter-rest-api-client --url)/actuator/info -i'
+echo 'curl $(minikube service api-tests-blue --url)/actuator/info -i'
+echo 'curl $(minikube service api-frontend-blue --url)/actuator/info -i'
+echo 'curl $(minikube service api-backend-blue --url)/actuator/info -i'
 echo ''
 
 set -x

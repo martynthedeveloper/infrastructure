@@ -1,4 +1,4 @@
-package com.martyn.servertests;
+package com.martyn.tests;
 
 import org.springframework.context.annotation.Configuration;
 
