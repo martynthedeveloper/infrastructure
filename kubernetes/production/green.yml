@@ -1,98 +1,98 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: starter-rest-api
+  name: api-backend
 spec:
   selector:
-    app: starter-rest-api
+    app: api-backend-blue
   ports:
     - protocol: TCP
-      port: 8888
+      port: 8080
       nodePort: 30001
   type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: starter-rest-api
+  name: api-backend-green
 spec:
   selector:
     matchLabels:
-      app: starter-rest-api
+      app: api-backend-green
   replicas: 1
   template:
     metadata:
       labels:
-        app: starter-rest-api
+        app: api-backend-green
     spec:
       containers:
-        - name: starter-rest-api
-          image: martynpi/starter-rest-api:4
+        - name: api-backend
+          image: martynpi/api-backend
           ports:
-            - containerPort: 8888
+            - containerPort: 8080
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: starter-rest-api-client
+  name: api-frontend
 spec:
   selector:
-    app: starter-rest-api-client
+    app: api-frontend-blue
   ports:
     - protocol: TCP
-      port: 8889
+      port: 8080
       nodePort: 30002
   type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: starter-rest-api-client
+  name: api-frontend-green
 spec:
   selector:
     matchLabels:
-      app: starter-rest-api-client
+      app: api-frontend-green
   replicas: 1
   template:
     metadata:
       labels:
-        app: starter-rest-api-client
+        app: api-frontend-green
     spec:
       containers:
-        - name: starter-rest-api-client
-          image: martynpi/starter-rest-api-client:4
+        - name: api-frontend-green
+          image: martynpi/api-frontend
           ports:
-            - containerPort: 8889
+            - containerPort: 8080
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: starter-rest-api-tests
+  name: api-tests
 spec:
   selector:
-    app: starter-rest-api-tests
+    app: api-tests-blue
   ports:
     - protocol: TCP
-      port: 8880
+      port: 8080
       nodePort: 30003
   type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: starter-rest-api-tests
+  name: api-tests-green
 spec:
   selector:
     matchLabels:
-      app: starter-rest-api-tests
+      app: api-tests-green
   replicas: 1
   template:
     metadata:
       labels:
-        app: starter-rest-api-tests
+        app: api-tests-green
     spec:
       containers:
-        - name: starter-rest-api-tests
-          image: martynpi/starter-rest-api-tests:4
+        - name: api-tests
+          image: martynpi/api-tests
           ports:
-            - containerPort: 8880
+            - containerPort: 8080

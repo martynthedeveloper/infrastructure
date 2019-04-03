@@ -19,7 +19,7 @@ public class FrontendController {
 
     @GetMapping
     public String frontend() {
-       return clientService.httpGetForReport("http://" + getenv("API_BACKEND_SERVICE_HOST") + ":" + getenv("API_BACKEND_SERVICE_PORT") + "/departments") + "\n";
+       return clientService.httpGetForJson("http://" + getenv("API_BACKEND_SERVICE_HOST") + ":" + getenv("API_BACKEND_SERVICE_PORT") + "/departments") + "\n";
     }
 
     @ResponseStatus(value = NOT_ACCEPTABLE, reason = "Doh!")
