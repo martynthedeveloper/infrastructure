@@ -21,8 +21,8 @@ public class TestsController {
     public String tests() {
 
         String result = "Testing ...\n";
-        result += clientService.httpGetForReport("http://" + getenv("API_FRONTEND_SERVICE_HOST") + ":" + getenv("API_FRONTEND_SERVICE_PORT") + "/departments") + "\n";
-        result += clientService.httpGetForReport("http://" + getenv("API_BACKEND_SERVICE_HOST") + ":" + getenv("API_BACKEND_SERVICE_PORT") + "/departments") + "\n";
+        result += clientService.httpGetForReport("backend","http://" + getenv("API_FRONTEND_SERVICE_HOST") + ":" + getenv("API_FRONTEND_SERVICE_PORT") + "/departments") + "\n";
+        result += clientService.httpGetForReport("frontend","http://" + getenv("API_BACKEND_SERVICE_HOST") + ":" + getenv("API_BACKEND_SERVICE_PORT") + "/departments") + "\n";
         return result;
     }
 

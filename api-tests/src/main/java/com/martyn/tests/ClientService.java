@@ -10,11 +10,11 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 @Service
 public class ClientService {
 
-    String httpGetForReport(String url) {
+    String httpGetForReport(String name, String url) {
         String result = "";
 
         try {
-            result += "\nTesting " + url + " " + httpGetForJson(url);
+            result += "\nTesting " + name + " " + url + " " + httpGetForJson(url);
         } catch (RuntimeException e) {
             result += " -> " + e.getMessage();
         }

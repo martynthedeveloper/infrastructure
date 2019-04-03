@@ -12,6 +12,10 @@ class DepartmentRepository {
     private final ConcurrentHashMap<Integer, Department> departments = new ConcurrentHashMap<>();
     private final AtomicInteger maxId = new AtomicInteger();
 
+    public DepartmentRepository() {
+        createDepartment(new Department(0, "IT Department", "UK"));
+    }
+
     Collection<Department> allDepartments() {
         return departments.values();
     }

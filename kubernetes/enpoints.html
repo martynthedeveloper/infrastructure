@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kubernetes</title>
+</head>
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<style>
+    .panel-heading {
+        font-weight: bold;
+    }
+</style>
+
+<body id="background-gradient" class="container">
+<div class="clearfix"></div>
+<div class="panel panel-default">
+    <div class="panel-heading">Cluster</div>
+    <table class="table">
+        <tr>
+            <td>Blue</td>
+            <td><a href="http://192.168.99.100:30001/departments">backend:/departments</a></td>
+            <td><a href="http://192.168.99.100:30002/departments">frontend:/departments</a></td>
+            <td><a href="http://192.168.99.100:30003/tests">tests:/tests</a></td>
+        </tr>
+        <tr>
+            <td>Blue</td>
+            <td><a href="http://192.168.99.100:30001/actuator/info">backend:/actuator/info</a></td>
+            <td><a href="http://192.168.99.100:30002/actuator/info">frontend:/actuator/info</a></td>
+            <td><a href="http://192.168.99.100:30003/actuator/info">tests:/actuator/info</a></td>
+        </tr>
+        <tr>
+            <td>Blue</td>
+            <td><a href="http://192.168.99.100:30001/actuator/env">backend:/actuator/env</a></td>
+            <td><a href="http://192.168.99.100:30002/actuator/env">frontend:/actuator/env</a></td>
+            <td><a href="http://192.168.99.100:30003/actuator/env">tests:/actuator/env</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
