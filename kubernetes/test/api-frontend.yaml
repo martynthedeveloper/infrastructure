@@ -1,0 +1,32 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: api-frontend
+spec:
+  selector:
+    app: api-frontend
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30000
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-frontend
+spec:
+  selector:
+    matchLabels:
+      app: api-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api-frontend
+    spec:
+      containers:
+        - name: api-frontend
+          image: martynpi/api-frontend:latest
+          ports:
+            - containerPort: 8080

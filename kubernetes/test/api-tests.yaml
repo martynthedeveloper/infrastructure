@@ -1,0 +1,32 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: api-tests
+spec:
+  selector:
+    app: api-tests
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30000
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-tests
+spec:
+  selector:
+    matchLabels:
+      app: api-tests
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api-tests
+    spec:
+      containers:
+        - name: api-tests
+          image: martynpi/api-tests:latest
+          ports:
+            - containerPort: 8080
