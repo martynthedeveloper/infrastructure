@@ -1,0 +1,32 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: api-backend
+spec:
+  selector:
+    app: api-backend
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30000
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-backend
+spec:
+  selector:
+    matchLabels:
+      app: api-backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api-backend
+    spec:
+      containers:
+        - name: api-backend
+          image: martynpi/api-backend:latest
+          ports:
+            - containerPort: 8080

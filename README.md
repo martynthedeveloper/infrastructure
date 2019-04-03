@@ -15,6 +15,7 @@ brew cask upgrade
 minikube stop; minikube delete; minikube start;
 kubectl cluster-info
 eval $(minikube docker-env)
+minikube dashboard
 minikube logs
 ```
 

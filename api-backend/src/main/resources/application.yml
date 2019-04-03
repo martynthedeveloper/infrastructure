@@ -6,6 +6,12 @@ management:
       exposure:
         include: "*"
 
+info:
+   app:
+    name: Backend
+    version: 1.0.0
+#TODO Make version be docker version
+
 logging.level.org.springframework.web : WARN
 logging.level.org.hibernate : WARN
 logging.level.com.martyn.server : DEBUG
