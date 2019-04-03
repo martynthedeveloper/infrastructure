@@ -6,4 +6,4 @@ echo ''
 
 set -x
 
-kubectl delete -f api-tests.yaml ; kubectl create -f api-tests.yaml
+kubectl delete -f api-tests.yml ; kubectl create -f api-tests.yml

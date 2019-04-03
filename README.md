@@ -43,7 +43,7 @@ docker build --file=Dockerfile --tag=martynpi/starter-rest-api .
 docker push martynpi/starter-rest-api
 docker pull martynpi/starter-rest-api
 
-kubectl delete -f deployment.yaml ; kubectl create -f deployment.yaml
+kubectl delete -f deployment.yml ; kubectl create -f deployment.yml
 
 minikube dashboard
 

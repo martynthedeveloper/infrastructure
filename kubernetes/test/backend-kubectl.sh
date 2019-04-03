@@ -6,4 +6,4 @@ echo ''
 
 set -x
 
-kubectl delete -f api-backend.yaml ; kubectl create -f api-backend.yaml
+kubectl delete -f api-backend.yml ; kubectl create -f api-backend.yml

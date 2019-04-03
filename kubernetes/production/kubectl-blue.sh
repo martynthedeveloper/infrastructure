@@ -6,4 +6,4 @@ echo ''
 
 set -x
 
-kubectl delete -f blue.yaml ; kubectl create -f blue.yaml
+kubectl delete -f blue.yml ; kubectl create -f blue.yml

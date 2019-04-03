@@ -19,7 +19,7 @@ docker build --file=Dockerfile --tag=martynpi/starter-rest-api-tests:4 .
 cd ..
 docker push martynpi/starter-rest-api-tests:4
 
-kubectl delete -f deployment.yaml ; kubectl create -f deployment.yaml
+kubectl delete -f deployment.yml ; kubectl create -f deployment.yml
 
 
 #curl -H "Content-Type: application/json" -X POST -d '{"name":"martyn","country":"uk"}' $(minikube service starter-rest-api --url)/departments -i
