@@ -12,14 +12,15 @@ plugins {
     id "org.springframework.boot" version "2.0.6.RELEASE"
 }
 
-group = 'martynpi'
-
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.palantir.docker'
+apply plugin: 'org.springframework.boot'
 
-bootJar {
-    baseName = 'api-frontend'
-    version = '1.0.0'
+group = 'martynpi'
+version = '1.2.3'
+
+springBoot {
+    buildInfo()
 }
 
 dependencies {
@@ -29,6 +30,10 @@ dependencies {
     compile 'org.codehaus.jackson:jackson-mapper-asl:1.8.5'
     compile 'com.sun.jersey:jersey-client:1.17.1'
     compile 'com.google.guava:guava:14.0.1'
+}
+
+processResources {
+    expand(project.properties)
 }
 
 task unpack(type: Copy) {
