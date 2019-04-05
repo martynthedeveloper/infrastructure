@@ -1,7 +1,11 @@
 FROM openjdk:8-jdk-alpine
 
-COPY build/libs/api-backend-1.0.0.jar app.jar
+#VOLUME /tmp
 
-EXPOSE 8080
+ARG DEPENDENCY=build/dependency
 
-ENTRYPOINT exec java -jar /app.jar
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY ${DEPENDENCY}/META-INF /app/META-INF
+COPY ${DEPENDENCY}/BOOT-INF/classes /app
+
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.martyn.backend.ApiBackend"]

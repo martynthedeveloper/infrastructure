@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
 set -x
-TAG="martynpi/api-frontend"
 
-../gradlew clean build
-docker build --file=Dockerfile --tag=${TAG} .
-docker push ${TAG}
+../gradlew clean build docker dockerPush
 
-#docker run --publish 8080:8080 ${TAG}
 #curl localhost:8080/actuator/info

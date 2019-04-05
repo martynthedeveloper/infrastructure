@@ -1,8 +1,21 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+    }
+}
+
 plugins {
+    id 'com.palantir.docker' version '0.13.0'
     id "org.springframework.boot" version "2.0.6.RELEASE"
 }
 
+group = 'martynpi'
+
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.palantir.docker'
 
 bootJar {
     baseName = 'api-frontend'
@@ -18,3 +31,14 @@ dependencies {
     compile 'com.google.guava:guava:14.0.1'
 }
 
+task unpack(type: Copy) {
+    dependsOn bootJar
+    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+    into("build/dependency")
+}
+
+docker {
+    name "${project.group}/${bootJar.baseName}"
+    copySpec.from(tasks.unpack.outputs).into("dependency")
+    buildArgs(['DEPENDENCY': "dependency"])
+}
