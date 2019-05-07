@@ -79,6 +79,12 @@ aws iam list-users
 # kops setup
 ```bash
 
+Add the following to ~/.bash_profile
+
+export bucket_name=nytram-kops-state-store
+export KOPS_CLUSTER_NAME=nytram.k8s.local
+export KOPS_STATE_STORE=s3://${bucket_name}
+
 https://medium.com/containermind/how-to-create-a-kubernetes-cluster-on-aws-in-few-minutes-89dda10354f4
 
 brew install kops
@@ -98,7 +104,6 @@ aws iam attach-user-policy --user-name mglewis --policy-arn $AmazonVPCFullAccess
 https://console.aws.amazon.com/iam/home?region=ap-southeast-2#/users/mglewis
 
 
-bucket_name=nytram-kops-state-store
 aws s3api create-bucket \
 --bucket ${bucket_name} \
 --region us-east-1
@@ -107,49 +112,21 @@ aws s3api list-buckets
 
 aws s3api put-bucket-versioning --bucket ${bucket_name} --versioning-configuration Status=Enabled
 
-
-export KOPS_CLUSTER_NAME=nytram.k8s.local
-export KOPS_STATE_STORE=s3://${bucket_name}
-
-
 ssh-keygen -t rsa
 kops create secret --name nytram.k8s.local sshpublickey admin -i ~/.ssh/id_rsa.pub
-
-kops create cluster \
---node-count=2 \
---node-size=t2.medium \
---zones=us-east-1a \
---name=${KOPS_CLUSTER_NAME}
-
-kops update cluster --yes
-
-Cluster is starting.  It should be ready in a few minutes.
-
-Suggestions:
- * validate cluster: kops validate cluster
- * list nodes: kubectl get nodes --show-labels
- * ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.nytram.k8s.local
- * the admin user is specific to Debian. If not using Debian please use the appropriate user based on your OS.
- * read about installing addons at: https://github.com/kubernetes/kops/blob/master/docs/addons.md.
-
-kubectl cluster-info
 
 ```
 
 # kops dashboard
 ```bash
 
-export KOPS_CLUSTER_NAME=nytram.k8s.local
-export KOPS_STATE_STORE=s3://${bucket_name}
-
 https://github.com/kubernetes/kops/blob/master/docs/addons.md
 
 kubectl create -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v1.10.1.yaml
 
-kops get secrets kube --type secret -oplaintext
+kops get secrets admin -oplaintext
 
 kubectl proxy
-
 
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
 ```
@@ -157,9 +134,6 @@ http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-da
 
 # kops clusters
 ```bash
-
-export KOPS_CLUSTER_NAME=nytram.k8s.local
-export KOPS_STATE_STORE=s3://${bucket_name}
 
 https://github.com/kubernetes/kops/blob/master/docs/commands.md
 
