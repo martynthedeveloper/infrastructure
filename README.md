@@ -82,7 +82,7 @@ aws iam list-users
 Add the following to ~/.bash_profile
 
 export bucket_name=nytram-kops-state-store
-export KOPS_CLUSTER_NAME=nytram.k8s.local
+export KOPS_CLUSTER_NAME=k8s.nytram.io
 export KOPS_STATE_STORE=s3://${bucket_name}
 
 https://medium.com/containermind/how-to-create-a-kubernetes-cluster-on-aws-in-few-minutes-89dda10354f4
@@ -113,7 +113,49 @@ aws s3api list-buckets
 aws s3api put-bucket-versioning --bucket ${bucket_name} --versioning-configuration Status=Enabled
 
 ssh-keygen -t rsa
-kops create secret --name nytram.k8s.local sshpublickey admin -i ~/.ssh/id_rsa.pub
+kops create secret --name ${KOPS_CLUSTER_NAME} sshpublickey admin -i ~/.ssh/id_rsa.pub
+
+
+
+https://pattern-match.com/blog/2019/01/30/k8s-tutorial-part01-setup-on-aws/
+
+aws route53 create-hosted-zone --name k8s.nytram.io --caller-reference `uuidgen` > subdomain-hosted-zone.json
+update subdomain.json with data from subdomain-hosted-zone.json
+
+aws route53 list-hosted-zones
+to get Z3BSI2BQWJHI85
+
+aws route53 change-resource-record-sets --hosted-zone-id Z3BSI2BQWJHI85 --change-batch file://subdomain.json
+
+dig ns k8s.nytram.io
+
+```
+
+# kops basic test
+```bash
+
+kubectl run node-hello --image=gcr.io/google-samples/node-hello:1.0 --port=8001
+kubectl proxy --port=8001 &
+curl http://localhost:8001/api/
+kubectl get pods
+
+kubectl get endpoints
+
+kubectl apply -f https://k8s.io/examples/application/shell-demo.yaml
+kubectl get pod shell-demo
+kubectl exec -it shell-demo -- /bin/bash
+kubectl delete pod shell-demo
+
+
+kubectl run hello-world --replicas=1 --labels="run=load-balancer-example" --image=gcr.io/google-samples/node-hello:1.0  --port=8080
+kubectl expose deployment hello-world --type=LoadBalancer --name=my-service
+kubectl get pods --output=wide
+kubectl get services --output=wide
+curl a0608197a719c11e99cbf0abdd14f4cb-485532138.us-east-1.elb.amazonaws.com:8080 
+
+kubectl delete service my-service
+kubectl delete deployment hello-world
+
 
 ```
 
@@ -128,7 +170,7 @@ kops get secrets admin -oplaintext
 
 kubectl proxy
 
-http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
+open http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
 ```
 
 
@@ -141,6 +183,7 @@ kops create cluster \
 --node-count=2 \
 --node-size=t2.medium \
 --zones=us-east-1a \
+--dns-zone ${KOPS_CLUSTER_NAME} \
 --name=${KOPS_CLUSTER_NAME}
 
 kops update cluster --yes
@@ -153,7 +196,6 @@ kubectl get nodes
 kubectl get pods
 kops get clusters
 
-kops delete cluster
 kops delete cluster --yes
 
 ```

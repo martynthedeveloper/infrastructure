@@ -1,0 +1,27 @@
+{
+  "Comment": "Create a subdomain NS record in the parent domain",
+  "Changes": [
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "k8s.nytram.io",
+        "Type": "NS",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "ns-1783.awsdns-30.co.uk"
+          },
+          {
+            "Value": "ns-914.awsdns-50.net"
+          },
+          {
+            "Value": "ns-42.awsdns-05.com"
+          },
+          {
+            "Value": "ns-1382.awsdns-44.org"
+          }
+        ]
+      }
+    }
+  ]
+}

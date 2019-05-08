@@ -1,0 +1,25 @@
+{
+    "HostedZone": {
+        "ResourceRecordSetCount": 2, 
+        "CallerReference": "6E31417B-4E22-4D1B-B408-7BB9CFD09436", 
+        "Config": {
+            "PrivateZone": false
+        }, 
+        "Id": "/hostedzone/Z2HBR6C2ZT4NXS", 
+        "Name": "k8s.nytram.io."
+    }, 
+    "DelegationSet": {
+        "NameServers": [
+            "ns-1783.awsdns-30.co.uk", 
+            "ns-914.awsdns-50.net", 
+            "ns-42.awsdns-05.com", 
+            "ns-1382.awsdns-44.org"
+        ]
+    }, 
+    "Location": "https://route53.amazonaws.com/2013-04-01/hostedzone/Z2HBR6C2ZT4NXS", 
+    "ChangeInfo": {
+        "Status": "PENDING", 
+        "SubmittedAt": "2019-05-08T13:33:55.725Z", 
+        "Id": "/change/C3J3WAAYRFRSHV"
+    }
+}
