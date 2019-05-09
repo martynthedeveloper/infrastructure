@@ -168,7 +168,7 @@ kubectl create -f https://raw.githubusercontent.com/kubernetes/kops/master/addon
 
 kops get secrets admin -oplaintext
 
-kubectl proxy
+kubectl proxy &
 
 open http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
 ```
