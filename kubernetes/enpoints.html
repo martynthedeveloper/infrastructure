@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
     <title>Kubernetes</title>
 </head>
@@ -18,25 +18,55 @@
 <body id="background-gradient" class="container">
 <div class="clearfix"></div>
 <div class="panel panel-default">
-    <div class="panel-heading">Cluster</div>
+    <div class="panel-heading">Departments</div>
     <table class="table">
         <tr>
             <td>Blue</td>
-            <td><a href="http://192.168.99.100:30001/departments">backend:/departments</a></td>
-            <td><a href="http://192.168.99.100:30002/departments">frontend:/departments</a></td>
-            <td><a href="http://192.168.99.100:30003/tests">tests:/tests</a></td>
+            <td><a href="http://192.168.99.100:30011/departments">backend:/departments</a></td>
+            <td><a href="http://192.168.99.100:30012/departments">frontend:/departments</a></td>
+            <td><a href="http://192.168.99.100:30013/tests">tests:/tests</a></td>
         </tr>
         <tr>
-            <td>Blue</td>
-            <td><a href="http://192.168.99.100:30001/actuator/info">backend:/actuator/info</a></td>
-            <td><a href="http://192.168.99.100:30002/actuator/info">frontend:/actuator/info</a></td>
-            <td><a href="http://192.168.99.100:30003/actuator/info">tests:/actuator/info</a></td>
+            <td>Green</td>
+            <td><a href="http://192.168.99.100:30021/departments">backend:/departments</a></td>
+            <td><a href="http://192.168.99.100:30022/departments">frontend:/departments</a></td>
+            <td><a href="http://192.168.99.100:30023/tests">tests:/tests</a></td>
         </tr>
+    </table>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Info</div>
+    <table class="table">
         <tr>
             <td>Blue</td>
-            <td><a href="http://192.168.99.100:30001/actuator/env">backend:/actuator/env</a></td>
-            <td><a href="http://192.168.99.100:30002/actuator/env">frontend:/actuator/env</a></td>
-            <td><a href="http://192.168.99.100:30003/actuator/env">tests:/actuator/env</a></td>
+            <td><a href="http://192.168.99.100:30011/actuator/info">backend:/actuator/info</a></td>
+            <td><a href="http://192.168.99.100:30012/actuator/info">frontend:/actuator/info</a></td>
+            <td><a href="http://192.168.99.100:30013/actuator/info">tests:/actuator/info</a></td>
+        </tr>
+        <tr>
+            <td>Green</td>
+            <td><a href="http://192.168.99.100:30021/actuator/info">backend:/actuator/info</a></td>
+            <td><a href="http://192.168.99.100:30022/actuator/info">frontend:/actuator/info</a></td>
+            <td><a href="http://192.168.99.100:30023/actuator/info">tests:/actuator/info</a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Environment Variables</div>
+    <table class="table">
+        <tr>
+            <td>Blue</td>
+            <td><a href="http://192.168.99.100:30011/actuator/env">backend:/actuator/env</a></td>
+            <td><a href="http://192.168.99.100:30012/actuator/env">frontend:/actuator/env</a></td>
+            <td><a href="http://192.168.99.100:30013/actuator/env">tests:/actuator/env</a></td>
+        </tr>
+        <tr>
+            <td>Green</td>
+            <td><a href="http://192.168.99.100:30021/actuator/env">backend:/actuator/env</a></td>
+            <td><a href="http://192.168.99.100:30022/actuator/env">frontend:/actuator/env</a></td>
+            <td><a href="http://192.168.99.100:30023/actuator/env">tests:/actuator/env</a></td>
         </tr>
     </table>
 </div>
