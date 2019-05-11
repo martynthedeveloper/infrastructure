@@ -182,11 +182,11 @@ https://github.com/kubernetes/kops/blob/master/docs/commands.md
 kops create cluster \
 --node-count=2 \
 --node-size=t2.medium \
+--cloud aws \
 --zones=us-east-1a \
 --dns-zone ${KOPS_CLUSTER_NAME} \
---name=${KOPS_CLUSTER_NAME}
-
-kops update cluster --yes
+--name=${KOPS_CLUSTER_NAME} \
+--yes
 
 kops validate cluster
 
