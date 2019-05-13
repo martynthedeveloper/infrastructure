@@ -8,7 +8,7 @@ import java.util.Collection;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
-@RequestMapping("departments")
+@RequestMapping("/api-backend/departments") // TODO config prefix in application.yml
 public class DepartmentController {
 
     private final DepartmentService departmentService;

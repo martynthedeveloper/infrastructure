@@ -1,14 +1,14 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: api-tests
 spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
   selector:
     app: api-tests
-  ports:
-    - protocol: TCP
-      port: 8080
-  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -26,6 +26,6 @@ spec:
     spec:
       containers:
         - name: api-tests
-          image: martynpi/api-tests:latest
+          image: martynpi/api-tests:3.0.0
           ports:
             - containerPort: 8080

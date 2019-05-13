@@ -1,22 +1,24 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: api-ingress
+  name: e2e-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: false
+    ingress.kubernetes.io/add-base-url: 'false'
+#    ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - http:
         paths:
-          - path: /api-backend
+          - path: /api-backend/
             backend:
               serviceName: api-backend
               servicePort: 8080
-          - path: /api-frontend
+          - path: /api-frontend/
             backend:
               serviceName: api-frontend
               servicePort: 8080
-          - path: /api-tests
+          - path: /api-tests/
             backend:
               serviceName: api-tests
               servicePort: 8080

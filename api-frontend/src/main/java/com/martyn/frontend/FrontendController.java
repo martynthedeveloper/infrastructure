@@ -7,7 +7,7 @@ import static java.lang.System.getenv;
 import static org.springframework.http.HttpStatus.NOT_ACCEPTABLE;
 
 @RestController
-@RequestMapping("departments")
+@RequestMapping("/api-frontend/departments") // TODO config prefix in application.yml
 public class FrontendController {
 
     private final ClientService clientService;

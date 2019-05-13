@@ -7,7 +7,7 @@ import static java.lang.System.getenv;
 import static org.springframework.http.HttpStatus.NOT_ACCEPTABLE;
 
 @RestController
-@RequestMapping("tests")
+@RequestMapping("/api-tests/tests") // TODO config prefix in application.yml
 public class TestsController {
 
     private final ClientService clientService;
@@ -21,8 +21,8 @@ public class TestsController {
     public String tests() {
 
         String result = "Testing ...\n";
-        result += clientService.httpGetForReport("backend","http://" + getenv("API_FRONTEND_SERVICE_HOST") + ":" + getenv("API_FRONTEND_SERVICE_PORT") + "/departments") + "\n";
-        result += clientService.httpGetForReport("frontend","http://" + getenv("API_BACKEND_SERVICE_HOST") + ":" + getenv("API_BACKEND_SERVICE_PORT") + "/departments") + "\n";
+        result += clientService.httpGetForReport("backend","http://api-backend/" + getenv("API_FRONTEND_SERVICE_HOST") + ":" + getenv("API_FRONTEND_SERVICE_PORT") + "/departments") + "\n";
+        result += clientService.httpGetForReport("frontend","http://api-frontend/" + getenv("API_BACKEND_SERVICE_HOST") + ":" + getenv("API_BACKEND_SERVICE_PORT") + "/departments") + "\n";
         return result;
     }
 

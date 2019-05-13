@@ -2,6 +2,13 @@
 
 set -x
 
-kubectl get deployments -o wide
-kubectl get services -o wide
-kubectl get ingress -o wide
+#kops validate cluster
+
+kubectl get nodes
+kubectl get pods
+#kops get clusters
+
+kubectl get deployments -o wide --all-namespaces
+kubectl get services -o wide --all-namespaces
+kubectl get ingress -o wide --all-namespaces
+kubectl describe ingress
