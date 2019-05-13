@@ -5,6 +5,7 @@
 
 kubectl apply -f e2e-deploy.yaml
 kubectl apply -f e2e-service.yaml
+kubectl apply -f e2e-service-node-port.yaml
 kubectl apply -f e2e-ingress.yaml
 
 ./show-all.sh
