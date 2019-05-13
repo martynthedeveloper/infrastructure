@@ -9,3 +9,7 @@ kubectl apply -f e2e-service-node-port.yaml
 kubectl apply -f e2e-ingress.yaml
 
 ./show-all.sh
+
+sleep 5
+
+./test-all.sh
