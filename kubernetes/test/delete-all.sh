@@ -8,5 +8,4 @@ kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/mas
 kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/aws/service-l4.yaml
 kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/aws/patch-configmap-l4.yaml
 
-
 ./show-all.sh

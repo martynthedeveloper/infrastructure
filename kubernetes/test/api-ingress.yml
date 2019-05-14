@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: e2e-ingress
+  name: api-ingress
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: false
     ingress.kubernetes.io/add-base-url: 'false'

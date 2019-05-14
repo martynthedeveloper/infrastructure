@@ -2,11 +2,11 @@
 
 set -x
 
-#kops validate cluster
+kops validate cluster
 
 kubectl get nodes
 kubectl get pods
-#kops get clusters
+kops get clusters
 
 kubectl get deployments -o wide --all-namespaces
 kubectl get services -o wide --all-namespaces

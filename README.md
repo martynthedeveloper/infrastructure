@@ -25,11 +25,6 @@ change all group = 'martynpi' in build.gradle
 docker login
 ./gradlew clean build docker dockerPush
 
-cd infrastructure/kubernetes/production
-./kubectl-blue.sh
-
-open ../endpoints.html
-
 ```
 
 # aws on Mac
@@ -115,8 +110,6 @@ aws s3api put-bucket-versioning --bucket ${bucket_name} --versioning-configurati
 ssh-keygen -t rsa
 kops create secret --name ${KOPS_CLUSTER_NAME} sshpublickey admin -i ~/.ssh/id_rsa.pub
 
-
-
 https://pattern-match.com/blog/2019/01/30/k8s-tutorial-part01-setup-on-aws/
 
 aws route53 create-hosted-zone --name k8s.nytram.io --caller-reference `uuidgen` > subdomain-hosted-zone.json
@@ -130,35 +123,6 @@ aws route53 change-resource-record-sets --hosted-zone-id Z3BSI2BQWJHI85 --change
 dig ns k8s.nytram.io
 
 ```
-
-# kops basic test
-```bash
-
-kubectl run node-hello --image=gcr.io/google-samples/node-hello:1.0 --port=8001
-kubectl proxy --port=8001 &
-curl http://localhost:8001/api/
-kubectl get pods
-
-kubectl get endpoints
-
-kubectl apply -f https://k8s.io/examples/application/shell-demo.yaml
-kubectl get pod shell-demo
-kubectl exec -it shell-demo -- /bin/bash
-kubectl delete pod shell-demo
-
-
-kubectl run hello-world --replicas=1 --labels="run=load-balancer-example" --image=gcr.io/google-samples/node-hello:1.0  --port=8080
-kubectl expose deployment hello-world --type=LoadBalancer --name=my-service
-kubectl get pods --output=wide
-kubectl get services --output=wide
-curl a0608197a719c11e99cbf0abdd14f4cb-485532138.us-east-1.elb.amazonaws.com:8080 
-
-kubectl delete service my-service
-kubectl delete deployment hello-world
-
-
-```
-
 # kops dashboard
 ```bash
 
@@ -173,29 +137,12 @@ kubectl proxy &
 open http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
 ```
 
+# TODO
 
-# kops clusters
-```bash
-
-https://github.com/kubernetes/kops/blob/master/docs/commands.md
-
-kops create cluster \
---node-count=2 \
---node-size=t2.medium \
---cloud aws \
---zones=us-east-1a \
---dns-zone ${KOPS_CLUSTER_NAME} \
---name=${KOPS_CLUSTER_NAME} \
---yes
-
-kops validate cluster
-
-https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Home:
-
-kubectl get nodes 
-kubectl get pods
-kops get clusters
-
-kops delete cluster --yes
-
-```
+- Secrets
+- Health endpoint checking
+- Service Discovery
+- Centralised logging
+- Centralised events
+- CI/CD Pipelines
+- Add ons
