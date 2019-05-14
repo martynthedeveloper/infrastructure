@@ -3,9 +3,8 @@ kind: Ingress
 metadata:
   name: api-ingress
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: false
-    ingress.kubernetes.io/add-base-url: 'false'
-#    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+#    ingress.kubernetes.io/add-base-url: "false"
 spec:
   rules:
     - http:

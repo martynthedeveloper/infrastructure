@@ -10,11 +10,13 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 ```bash
 
 brew cask upgrade
-minikube stop; minikube delete; minikube start;
+minikube stop; minikube delete; minikube start; minikube addons enable ingress
 kubectl cluster-info
 eval $(minikube docker-env)
 minikube dashboard &
 minikube logs
+curl $(minikube service api-backend --url)/actuator/info
+
 ```
 
 # docker
@@ -133,12 +135,14 @@ kubectl create -f https://raw.githubusercontent.com/kubernetes/kops/master/addon
 kops get secrets admin -oplaintext
 
 kubectl proxy &
+sudo lsof -i tcp:8001 
 
 open http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
 ```
 
 # TODO
 
+- HTTPS
 - Secrets
 - Health endpoint checking
 - Service Discovery
