@@ -2,6 +2,9 @@
 
 set -x
 
+kubectl config get-contexts
+kubectl cluster-info
+
 kubectl get nodes
 kubectl get pods
 
