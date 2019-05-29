@@ -10,3 +10,8 @@ management:
 logging.level.org.springframework.web : WARN
 logging.level.org.hibernate : WARN
 logging.level.com.martyn.server : DEBUG
+
+# https://github.com/spring-projects/spring-boot/commit/c0c67f2593dbfd17aa304b43f4da3a3678fa58eb
+backend:
+  host: '\${API_BACKEND_SERVICE_HOST:localhost}' # TODO remove local default
+  port: '\${API_BACKEND_SERVICE_PORT:8081}' # TODO remove local default
