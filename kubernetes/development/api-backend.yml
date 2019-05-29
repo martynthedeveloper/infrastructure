@@ -26,6 +26,6 @@ spec:
     spec:
       containers:
         - name: api-backend
-          image: martynpi/api-backend:3.0.0
+          image: martynpi/api-backend:5.0.0
           ports:
             - containerPort: 8080

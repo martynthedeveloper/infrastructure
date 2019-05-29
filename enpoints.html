@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Kubernetes</title>
+</head>
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<style>
+    .panel-heading {
+        font-weight: bold;
+    }
+</style>
+
+<body id="background-gradient" class="container">
+<div class="clearfix"></div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">k8s.nytram.io</div>
+    <table class="table">
+        <tr>
+            <td>Ingress info</td>
+            <td><a href="http://ingress.k8s.nytram.io/api-backend/info">api-backend/info</a></td>
+            <td><a href="http://ingress.k8s.nytram.io/api-frontend/info">api-frontend/info</a></td>
+            <td><a href="http://ingress.k8s.nytram.io/api-tests/info">api-tests/info</a></td>
+        </tr>
+        <tr>
+            <td>Ingress JSON</td>
+            <td><a href="http://ingress.k8s.nytram.io/api-backend/departments">api-backend/departments</a></td>
+            <td><a href="http://ingress.k8s.nytram.io/api-frontend/departments">api-frontend/departments</a></td>
+            <td><a href="http://ingress.k8s.nytram.io/api-tests/tests">api-tests/tests</a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">localhost</div>
+    <table class="table">
+        <tr>
+            <td>Direct info</td>
+            <td><a href="http://127.0.0.1:8081/api-backend/info">api-backend/info</a></td>
+            <td><a href="http://127.0.0.1:8082/api-frontend/info">api-frontend/info</a></td>
+            <td><a href="http://127.0.0.1:8083/api-tests/info">api-tests/info</a></td>
+        </tr>
+        <tr>
+            <td>Direct JSON</td>
+            <td><a href="http://127.0.0.1:8081/api-backend/departments">api-backend/departments</a></td>
+            <td><a href="http://127.0.0.1:8082/api-frontend/departments">api-frontend/departments</a></td>
+            <td><a href="http://127.0.0.1:8083/api-tests/tests">api-tests/tests</a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Minikube</div>
+    <table class="table">
+        <tr>
+            <td>Ingress info</td>
+            <td><a href="http://192.168.99.100/api-backend/info">api-backend/info</a></td>
+            <td><a href="http://192.168.99.100/api-frontend/info">api-frontend/info</a></td>
+            <td><a href="http://192.168.99.100/api-tests/info">api-tests/info</a></td>
+        </tr>
+        <tr>
+            <td>Ingress JSON</td>
+            <td><a href="http://192.168.99.100/api-backend/departments">api-backend/departments</a></td>
+            <td><a href="http://192.168.99.100/api-frontend/departments">api-frontend/departments</a></td>
+            <td><a href="http://192.168.99.100/api-tests/tests">api-tests/tests</a></td>
+        </tr>
+        <tr>
+            <td>Ingress Envs</td>
+            <td><a href="http://192.168.99.100/api-backend/env">api-backend/env</a></td>
+            <td><a href="http://192.168.99.100/api-frontend/env">api-frontend/env</a></td>
+            <td><a href="http://192.168.99.100/api-tests/env">api-tests/env</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

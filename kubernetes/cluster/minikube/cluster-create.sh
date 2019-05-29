@@ -5,7 +5,6 @@ set -x
 minikube start
 minikube addons enable ingress
 eval $(minikube docker-env)
-
-#minikube dashboard &
+minikube dashboard &
 
 #minikube logs

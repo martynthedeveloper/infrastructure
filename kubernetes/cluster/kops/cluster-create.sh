@@ -15,3 +15,5 @@ kops validate cluster
 
 echo ' ssh use DNS ...'
 echo ' ssh -i ~/.ssh/id_rsa admin@api.k8s.nytram.io '
+
+echo ' no run apply-ingress.sh'

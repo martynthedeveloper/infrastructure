@@ -4,6 +4,10 @@
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 ./gradlew clean build test
+
+change all group = 'martynpi' in build.gradle
+docker login
+./gradlew clean build docker dockerPush
 ````
 
 # minikube on Mac
@@ -16,16 +20,6 @@ eval $(minikube docker-env)
 minikube dashboard &
 minikube logs
 curl $(minikube service api-backend --url)/actuator/info
-
-```
-
-# docker
-```bash
-
-change all group = 'martynpi' in build.gradle
-
-docker login
-./gradlew clean build docker dockerPush
 
 ```
 

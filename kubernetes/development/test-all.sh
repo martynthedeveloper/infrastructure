@@ -3,7 +3,8 @@
 set -x
 
 IP=ingress.k8s.nytram.io
-#IP=a626f9018756b11e9a8df0af8b934799-188568855.us-east-1.elb.amazonaws.com
+#IP=af7453f10821b11e9b09e0a5fbc3d0b9-107115694.us-east-1.elb.amazonaws.com
+#IP=`minikube ip`
 
 curl http://${IP}/api-backend/info
 
