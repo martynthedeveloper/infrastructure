@@ -1,7 +1,7 @@
 # Running and Testing
 ```bash
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_144`
 
 ./gradlew clean build test
 
@@ -12,14 +12,24 @@ docker login
 
 # minikube on Mac
 ```bash
+brew upgrade
+brew update
+minikube delete --all --purge;
+brew remove minikube
+brew install minikube
 
-brew cask upgrade
-minikube stop; minikube delete; minikube start; minikube addons enable ingress
+minikube stop; minikube delete; minikube start --vm=true; minikube addons enable ingress
+minikube docker-env
 kubectl cluster-info
-eval $(minikube docker-env)
+kubectl get services
 minikube dashboard &
 minikube logs
-curl $(minikube service api-backend --url)/actuator/info
+
+
+cd kubernetes/development
+./apply-all.sh
+# wait 30 seconds to start otherwise you will get 502 Bad Gateway
+./test-all.sh
 
 ```
 

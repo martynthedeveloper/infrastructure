@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: api-ingress
@@ -9,15 +9,24 @@ spec:
   rules:
     - http:
         paths:
-          - path: /api-backend/
+          - path: /api-backend
+            pathType: Prefix
             backend:
-              serviceName: api-backend
-              servicePort: 8080
-          - path: /api-frontend/
+              service:
+                name: api-backend
+                port:
+                  number: 8080
+          - path: /api-frontend
+            pathType: Prefix
             backend:
-              serviceName: api-frontend
-              servicePort: 8080
-          - path: /api-tests/
+              service:
+                name: api-frontend
+                port:
+                  number: 8080
+          - path: /api-tests
+            pathType: Prefix
             backend:
-              serviceName: api-tests
-              servicePort: 8080
+              service:
+                name: api-tests
+                port:
+                  number: 8080
